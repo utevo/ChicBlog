@@ -126,4 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# crispy_forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MESSAGE_LEVEL = 10  # DEBUG
