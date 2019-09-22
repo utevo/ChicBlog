@@ -129,4 +129,9 @@ STATIC_URL = '/static/'
 # crispy_forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# messages settings
 MESSAGE_LEVEL = 10  # DEBUG
+
+# accounts settings
+LOGIN_REDIRECT_URL = 'chicblog:home'
+LOGIN_URL = 'accounts:login'
