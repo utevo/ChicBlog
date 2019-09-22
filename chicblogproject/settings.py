@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     # my apps
     'chicblog',
+    'accounts',
+
+    # third-party apps,
+    'crispy_forms', 
 ]
 
 MIDDLEWARE = [
@@ -121,3 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# crispy_forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# messages settings
+MESSAGE_LEVEL = 10  # DEBUG
+
+# accounts settings
+LOGIN_REDIRECT_URL = 'chicblog:home'
+LOGIN_URL = 'accounts:login'
