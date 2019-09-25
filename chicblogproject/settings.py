@@ -135,3 +135,7 @@ MESSAGE_LEVEL = 10  # DEBUG
 # accounts settings
 LOGIN_REDIRECT_URL = 'chicblog:home'
 LOGIN_URL = 'accounts:login'
+
+# media settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
