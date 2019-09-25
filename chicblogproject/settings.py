@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'chicblog',
-    'accounts',
+    'chicblog.apps.ChicblogConfig',
+    'accounts.apps.AccountsConfig',
 
     # third-party apps,
     'crispy_forms', 
