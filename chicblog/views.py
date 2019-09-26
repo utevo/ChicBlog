@@ -1,14 +1,15 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+
 from .models import Post
 
-def home(request):
-    all_posts = Post.objects.order_by('-date_posted')
-    context = { 
-        'posts': all_posts
-    }
-    return render(request, 'chicblog/home.html', context)
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'chicblog/post_list.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
 
 
 def about(request):
     return render(request, 'chicblog/about.html')
-
