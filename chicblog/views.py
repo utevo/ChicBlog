@@ -1,4 +1,7 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin
+    )
 from django.shortcuts import render
 from django.views.generic import (
     ListView,
@@ -23,20 +26,27 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
 
 
-class PostCreateView(LoginRequiredMixin, CreateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
-    template_name = 'chicblog/post_create.html'
+    template_name = 'chicblog/post_update.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self):
+        post = self.get_object()
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+        if post.author == self.request.user:
+            return True
+        return False
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
-    template_name = 'chicblog/post_update.html'
+    template_name = 'chicblog/post_create.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
