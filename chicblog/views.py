@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin
     )
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     ListView,
     DetailView,
@@ -10,6 +10,7 @@ from django.views.generic import (
     DeleteView,
     CreateView,
     )
+from django.contrib.auth.models import User
 
 from .models import Post
 
@@ -20,6 +21,18 @@ class PostListView(ListView):
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 6
+
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'chicblog/user_posts.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 6
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return user.post_set.all()
 
 
 class PostDetailView(DetailView):
