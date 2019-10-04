@@ -10,4 +10,9 @@ urlpatterns = [
              template_name='accounts/password_reset/home.html'
          ),
          name='home'),
+    path('done/',
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='accounts/password_reset/done.html'
+         ),
+         name='done'),
 ]

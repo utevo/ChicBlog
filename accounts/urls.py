@@ -11,6 +11,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(
          template_name='accounts/logout.html'), name='logout'),
     path('profile/', accounts_views.profile, name='profile'),
-    path('password/reset', 
+    path('password/reset/', 
          include('accounts.password_reset.urls')),
 ]
