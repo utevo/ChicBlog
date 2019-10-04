@@ -15,4 +15,9 @@ urlpatterns = [
              template_name='accounts/password_reset/done.html'
          ),
          name='done'),
+    path('confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='accounts/password_reset/confirm.html'
+         ),
+         name='confirm'),
 ]
