@@ -20,4 +20,21 @@
             <p class="article-content">{{ post.content }}</p>
         </div>
     </article>
+
+
+    
+    <h4>{{ comments.count }} comments</h4>
+    {% for comment in comments %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ comment.author.profile.image.url }}"/>
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'chicblog:user_posts' comment.author.username %}">{{ comment.author }}</a>
+                <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
+            </div>
+
+            <p class="article-content">{{ comment.content }}</p>
+        </div>
+    </article>
+    {% endfor %}
 {% endblock content %}
