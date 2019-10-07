@@ -1,0 +1,10 @@
+{% extends "chicblog/base.html" %}
+
+{% block content %}
+
+    <div class="alert alert-info">
+        Your passwrod has been changed.
+    </div>
+    <a href="{% url 'accounts:login' %}">Sign In Here</a>
+  
+{% endblock content %}

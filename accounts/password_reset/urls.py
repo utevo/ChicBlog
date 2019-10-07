@@ -19,7 +19,13 @@ urlpatterns = [
          name='done'),
     path('confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(
-             template_name='accounts/password_reset/confirm.html'
+             template_name='accounts/password_reset/confirm.html',
+             success_url='/accounts/password/reset/complete/' # todo: use reverse
          ),
          name='confirm'),
+    path('complete/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='accounts/password_reset/complete.html'
+         ),
+         name='complete'),
 ]
