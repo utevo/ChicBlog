@@ -13,10 +13,14 @@
 
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Login</button>
-            </div>            
+            </div>
+
+            <small class="text-muted">
+                    <a href="{% url 'accounts:password_reset:home' %}">Forgot Password?</a>
+            </small>
         </form>
 
-        <div class="border-top pt-3 ">
+        <div class="border-top pt-3">
             <small class="text-muted">
                 Don't Have An Account?<a class="ml-3" href="{% url 'accounts:register' %}">Sign Up</a>
             </small>
