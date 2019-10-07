@@ -39,6 +39,14 @@ class PostDetailView(DetailView):
     template_name = 'chicblog/post_detail.html'
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        post = context['post']
+        context['comments'] = post.comment_set.all()
+
+        return context
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
