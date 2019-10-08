@@ -8,7 +8,7 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     PostCreateView,
-    UserPostListView
+    UserPostListView,
     )
 
 
@@ -16,12 +16,21 @@ app_name = 'chicblog'
 
 urlpatterns = [
     path('', PostListView.as_view(), name='home'),
+
     path('user/<str:username>', UserPostListView.as_view(), name='user_posts'),
+
     path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+
+    path('post/<int:pk>/comments/new/', views.comment_create,
+         name='comment_create'),
+    
     path('post/<int:pk>/update/', PostUpdateView.as_view(),
          name='post_update'),
+
     path('post/<int:pk>/delete/', PostDeleteView.as_view(),
          name='post_delete'),
+
     path('post/new/', PostCreateView.as_view(), name='post_create'),
-    path('about/', views.about, name='about')
+
+    path('about/', views.about, name='about'), 
 ]
